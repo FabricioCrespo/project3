@@ -1,0 +1,35 @@
+<!-- #author: jose Seraquive -->
+<!-- #university: Yachay Tech -->
+<!-- #course: Web Programming 2019 -->
+
+{% extends "orders/layout.html" %}
+
+{% load crispy_forms_tags %}
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+<h1>Registro</h1>
+{% if message %}
+    <div>
+        {{ message }}
+    </div>
+{% endif %}
+<div class="content-section">
+    <form method="post">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class = "border_bottom mb-4">Registro</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class = "btn btn-outline-info" type="submit">Registrarse</button>
+        </div>
+
+    </form>
+    <div class="border-top pt-3">
+        <small class = "text-muted">
+            Se encuentra registrado ? <a class = "ml-2" href="/users/login">Iniciar Sesión</a>
+        </small>
+    </div>
+</div>
+{% endblock %}

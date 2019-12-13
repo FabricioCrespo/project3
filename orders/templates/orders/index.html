@@ -1,0 +1,40 @@
+<!-- #author: jose Seraquive -->
+<!-- #university: Yachay Tech -->
+<!-- #course: Web Programming 2019 -->
+
+{% extends "orders/layout.html" %}
+
+<!-- {% block title %}
+     Menu
+     {% endblock %} -->
+
+{% block body %}
+<h1 align="left" >Menu</h1>
+{% for type, names in types.items %}
+<h3 align="center">{{type}}</h3>
+<div class="container menu-container"></div>
+    <div class="card text-center">
+        <div class="card-body">
+            <ul class="card-title">
+                {% for name, objects in names.items %}
+                {% if name == 'Pizza' %}
+                <div class="box">
+                <ul>{{name}} <br/>{% for object in objects %}
+                <br/> <a href="add/{{object.id}}" style="color:red" > <p class="card-text">{{object.size}} with {{object.num_toppings}} topping(s) on ${{object.prize}}</p></a>
+                        <br>
+                        {% endfor %}
+                </ul>
+                </div>
+                {% else %}
+                <ul>{{name}} <br/> {% for object in objects %}
+                    <br/> <a href="add/{{object.id}}" style="color:red" ><p class="card-text">{{object.size}} on ${{object.prize}}</p></a>
+                            {% endfor %}
+                </ul>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
